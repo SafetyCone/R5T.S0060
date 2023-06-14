@@ -6,6 +6,9 @@
     <NoWarn>1573;1587;1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="CliWrap" Version="3.6.3" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\..\R5T.F0000\source\R5T.F0000\R5T.F0000.csproj" />
   </ItemGroup>
 </Project>
