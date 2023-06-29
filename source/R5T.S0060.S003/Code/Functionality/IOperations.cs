@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 
 using Microsoft.Extensions.Logging;
 
@@ -15,7 +16,7 @@ namespace R5T.S0060.S003
     [FunctionalityMarker]
     public partial interface IOperations : IFunctionalityMarker
     {
-        public void SendMail(ILogger logger)
+        public async Task SendMail(ILogger logger)
         {
             logger.LogInformation("Sending mail...");
 
@@ -36,7 +37,7 @@ namespace R5T.S0060.S003
                 bodyLines);
 
             // Build email.
-            var gmailAuthenticationFilePath = FilePathProvider.Instance.GetGmailAuthenticationFilePath();
+            var gmailAuthenticationFilePath = await FilePathProvider.Instance.GetGmailAuthenticationFilePath();
 
             var authentication = JsonOperator.Instance.LoadFromFile_Synchronous<Authentication>(
                 gmailAuthenticationFilePath,

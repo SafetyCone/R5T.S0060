@@ -1,17 +1,18 @@
 using System;
+using System.Threading.Tasks;
 
 
 namespace R5T.S0060.S003
 {
     class Program
     {
-        static void Main()
+        static async Task Main()
         {
-            F0035.LoggingOperator.Instance.InConsoleLoggerContext_Synchronous(
+            await F0035.LoggingOperator.Instance.InConsoleLoggerContext(
                 "R5T.S0060.S003",
-                logger =>
+                async logger =>
                 {
-                    Operations.Instance.SendMail(logger);
+                    await Operations.Instance.SendMail(logger);
                 });
         }
     }
